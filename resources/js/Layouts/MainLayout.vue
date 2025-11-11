@@ -6,8 +6,9 @@ import { Link } from "@inertiajs/vue3";
     <div class="p-4">
         <Link href="/" class="mr-2">Main Page</Link>
         <Link href="/hello">Show Page</Link>
-    </div>
-    <div>
-        <slot />
+
+        <div class="mt-4">
+            <slot />
+        </div>
     </div>
 </template>
