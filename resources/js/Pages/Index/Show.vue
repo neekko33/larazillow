@@ -1,8 +1,7 @@
 <script setup>
-import { Link,usePage } from "@inertiajs/vue3"
-const id = usePage().props.id
+import { Link } from "@inertiajs/vue3"
 </script>
+
 <template>
-    <h1>Show Page {{ id }}</h1>
-    <Link href="/">Main Page</Link>
+    <h1>Show Page</h1>
 </template>

@@ -8,11 +8,13 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return inertia('Index/Index');
+        return inertia('Index/Index', [
+            'message' => 'Welcome to the Index Page',
+        ]);
     }
 
-    public function show($id)
+    public function show()
     {
-        return inertia('Index/Show', ['id' => $id]);
+        return inertia('Index/Show');
     }
 }
