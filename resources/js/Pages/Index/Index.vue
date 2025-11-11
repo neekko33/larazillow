@@ -1,5 +1,7 @@
+<script setup>
+    import { Link } from '@inertiajs/vue3'
+</script>
 <template>
-    <div class="p-6 bg-white border-b border-gray-200">
-        Laravel + Inertia.js + Vue.js + Vite
-    </div>
+    <h1>Index page</h1>
+    <Link href="/show/1">Show Page</Link>
 </template>
