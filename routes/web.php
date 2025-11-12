@@ -8,5 +8,5 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/hello', [IndexController::class, 'show'])->name('show');
 
 Route::resource('listing', ListingController::class)->only([
-    'index', 'show'
+    'index', 'show', 'create', 'store'
 ]);

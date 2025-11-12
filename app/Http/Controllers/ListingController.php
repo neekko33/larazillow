@@ -13,7 +13,7 @@ class ListingController extends Controller
     public function index()
     {
         return inertia('Listing/Index', [
-            'listings' => Listing::all()
+            'listings' => Listing::orderBy('created_at', 'desc')->get()
         ]);
     }
 
@@ -22,7 +22,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Listing/Create');
     }
 
     /**
@@ -30,7 +30,20 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'beds' => 'required|integer|min:0|max:20',
+            'baths' => 'required|integer|min:0|max:20',
+            'area' => 'required|integer|min:15|max:1500',
+            'city' => 'required|string',
+            'code' => 'required|string',
+            'street' => 'required|string',
+            'street_num' => 'required|integer|min:1|max:1000',
+            'price' => 'required|integer|min:1|max:20000000',
+        ]);
+
+        Listing::create($validated);
+
+        return to_route('listing.index')->with('success', 'Listing created successfully.');
     }
 
     /**
