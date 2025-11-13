@@ -16,8 +16,20 @@ defineProps({
             <p>Bathrooms: {{ listing.baths }}</p>
             <p>Area: {{ listing.area }} m²</p>
         </div>
-        <Link class="text-blue-500 underline" :href="`/listing/${listing.id}`"
-            >View Listing</Link
-        >
+        <div>
+            <Link
+                class="text-blue-500 underline"
+                :href="`/listing/${listing.id}/edit`"
+                >Edit Listing</Link
+            >
+            <Link
+                class="text-red-500 underline ml-4"
+                :href="`/listing/${listing.id}`"
+                method="delete"
+                as="button"
+            >
+                Delete Listing
+            </Link>
+        </div>
     </div>
 </template>

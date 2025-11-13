@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
-use Illuminate\Http\Request;
+use App\Http\Requests\ListingRequest;
 
 class ListingController extends Controller
 {
@@ -28,20 +28,9 @@ class ListingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ListingRequest $request)
     {
-        $validated = $request->validate([
-            'beds' => 'required|integer|min:0|max:20',
-            'baths' => 'required|integer|min:0|max:20',
-            'area' => 'required|integer|min:15|max:1500',
-            'city' => 'required|string',
-            'code' => 'required|string',
-            'street' => 'required|string',
-            'street_num' => 'required|integer|min:1|max:1000',
-            'price' => 'required|integer|min:1|max:20000000',
-        ]);
-
-        Listing::create($validated);
+        Listing::create($request->validated());
 
         return to_route('listing.index')->with('success', 'Listing created successfully.');
     }
@@ -61,15 +50,20 @@ class ListingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return inertia('Listing/Edit', [
+            'listing' => Listing::findOrFail($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ListingRequest $request, string $id)
     {
-        //
+        $listing = Listing::findOrFail($id);
+        $listing->update($request->validated());
+
+        return to_route('listing.index')->with('success', 'Listing updated successfully.');
     }
 
     /**
@@ -77,6 +71,9 @@ class ListingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $listing = Listing::findOrFail($id);
+        $listing->delete();
+
+        return redirect()->back()->with('success', 'Listing deleted successfully.');
     }
 }
