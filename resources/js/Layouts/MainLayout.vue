@@ -9,8 +9,8 @@ const flashMessage = computed(() => page.props.flash.success);
 
 <template>
     <div class="p-4">
-        <Link href="/listing" class="mr-2">Listing</Link>
-        <Link href="/listing/create">New Listing</Link>
+        <Link :href="route('listing.index')" class="mr-2">Listing</Link>
+        <Link :href="route('listing.create')">New Listing</Link>
 
         <div v-if="flashMessage" class="text-green-500 my-4">
             {{ flashMessage }}

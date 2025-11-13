@@ -19,12 +19,12 @@ defineProps({
         <div>
             <Link
                 class="text-blue-500 underline"
-                :href="`/listing/${listing.id}/edit`"
+                :href="route('listing.edit', listing.id)"
                 >Edit Listing</Link
             >
             <Link
                 class="text-red-500 underline ml-4"
-                :href="`/listing/${listing.id}`"
+                :href="route('listing.destroy', listing.id)"
                 method="delete"
                 as="button"
             >
