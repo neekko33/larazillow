@@ -1,10 +1,13 @@
 <script setup>
 import ListingFormItem from "@/Components/ListingFormItem.vue";
 import { useForm } from "@inertiajs/vue3";
+import { inject } from "vue";
 
 const props = defineProps({
     listing: Object,
 });
+
+const route = inject("route");
 
 const form = useForm(props.listing);
 
@@ -20,7 +23,7 @@ const formItems = [
 ];
 
 const update = () => {
-    form.put(`/listing/${form.id}`);
+    form.put(route("listing.update", form.id));
 };
 </script>
 

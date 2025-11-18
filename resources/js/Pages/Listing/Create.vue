@@ -1,6 +1,9 @@
 <script setup>
 import ListingFormItem from "@/Components/ListingFormItem.vue";
 import { useForm } from "@inertiajs/vue3";
+import { inject } from "vue";
+
+const route = inject("route");
 
 const form = useForm({
     beds: null,
@@ -25,7 +28,7 @@ const formItems = [
 ];
 
 const create = () => {
-    form.post("/listing");
+    form.post(route("listing.store"));
 };
 </script>
 
