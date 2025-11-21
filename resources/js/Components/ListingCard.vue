@@ -1,21 +1,18 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import Box from "./UI/Box.vue";
+import ListingAddress from "./ListingAddress.vue";
+import ListingSpace from "./ListingSpace.vue";
+
 defineProps({
     listing: Object,
 });
 </script>
 
 <template>
-    <div>
-        <h1>
-            {{ listing.city }} {{ listing.street }} {{ listing.street_num }}
-        </h1>
-        <div class="flex gap-2">
-            <p>Price: ${{ listing.price }}</p>
-            <p>Bedrooms: {{ listing.beds }}</p>
-            <p>Bathrooms: {{ listing.baths }}</p>
-            <p>Area: {{ listing.area }} m²</p>
-        </div>
+    <Box>
+        <ListingSpace :listing="listing" class="text-lg" />
+        <ListingAddress :listing="listing" class="text-gray-500" />
         <div>
             <Link
                 class="text-blue-500 underline"
@@ -31,5 +28,5 @@ defineProps({
                 Delete Listing
             </Link>
         </div>
-    </div>
+    </Box>
 </template>
