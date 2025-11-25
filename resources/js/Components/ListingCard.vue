@@ -3,6 +3,7 @@ import { Link } from "@inertiajs/vue3";
 import Box from "./UI/Box.vue";
 import ListingAddress from "./ListingAddress.vue";
 import ListingSpace from "./ListingSpace.vue";
+import Price from "./Price.vue";
 
 defineProps({
     listing: Object,
@@ -11,8 +12,9 @@ defineProps({
 
 <template>
     <Box>
+        <Price :price="listing.price" class="text-2xl font-bold" />
         <ListingSpace :listing="listing" class="text-lg" />
-        <ListingAddress :listing="listing" class="text-gray-500" />
+        <ListingAddress :listing="listing" class="text-gray-500 mr-2" />
         <div>
             <Link
                 class="text-blue-500 underline"
