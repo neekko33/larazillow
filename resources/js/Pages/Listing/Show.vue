@@ -1,10 +1,32 @@
-<script setup>
+<script setup lang="ts">
+import { ref, computed } from "vue";
 import Price from "@/Components/Price.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingSpace from "@/Components/ListingSpace.vue";
 import Box from "@/Components/UI/Box.vue";
-defineProps({
-    listing: Object,
+import type { ListingShowProps } from "@/types";
+
+const props = defineProps<ListingShowProps>();
+
+const interestRate = ref(2.5);
+const durationYears = ref(10);
+
+const monthlyPayment = computed(() => {
+    const principal = props.listing.price;
+    const monthlyInterest = interestRate.value / 100 / 12;
+    const numberOfPayments = durationYears.value * 12;
+
+    if (monthlyInterest === 0) {
+        return principal / numberOfPayments;
+    }
+
+    const monthlyPayment =
+        (principal *
+            monthlyInterest *
+            Math.pow(1 + monthlyInterest, numberOfPayments)) /
+        (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
+
+    return monthlyPayment;
 });
 </script>
 
@@ -25,9 +47,22 @@ defineProps({
 
             <Box>
                 <template #header>
-                    Offer
+                    Monthly Payment
                 </template>
-                Make an offer
+                <div>
+                    <label class="label">Interest rate ({{ interestRate }}%)</label>
+                    <input v-model="interestRate" type="range" min="0.1" max="30" step="0.1"
+                        class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+
+                    <label class="label">Duration ({{ durationYears }} years)</label>
+                    <input v-model="durationYears" type="range" min="3" max="35" step="1"
+                        class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+
+                    <div class="text-gray-600 dark:text-gray-300 mt-2">
+                        <div class="text-gray-400">Your monthly payment</div>
+                        <Price :price="monthlyPayment" class="text-2xl" />
+                    </div>
+                </div>
             </Box>
         </div>
     </div>

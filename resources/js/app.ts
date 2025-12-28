@@ -2,12 +2,12 @@ import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import '../css/app.css'
 import MainLayout from '@/Layouts/MainLayout.vue'
-import { ZiggyVue } from 'ziggy-js';
+import { ZiggyVue } from 'ziggy-js'
 
 createInertiaApp({
-  resolve: name => {
+  resolve: (name: string) => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
-    const page =  pages[`./Pages/${name}.vue`]
+    const page = pages[`./Pages/${name}.vue`] as any
     page.default.layout = page.default.layout || MainLayout
     return page
   },

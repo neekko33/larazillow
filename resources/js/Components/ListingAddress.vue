@@ -1,7 +1,9 @@
-<script setup>
-defineProps({
-    listing: Object,
-});
+<script setup lang="ts">
+import type { Listing } from "@/types";
+
+defineProps<{
+    listing: Listing
+}>();
 </script>
 <template>
 <span>

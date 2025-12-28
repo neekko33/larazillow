@@ -1,20 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import ListingFormItem from "@/Components/ListingFormItem.vue";
 import { useForm } from "@inertiajs/vue3";
-import { inject } from "vue";
-import { FORM_ITEMS as formItems } from "@/constant.js";
-
-const route = inject("route");
+import { FORM_ITEMS as formItems } from "@/constant";
 
 const form = useForm({
-    beds: null,
-    baths: null,
-    area: null,
+    beds: null as number | null,
+    baths: null as number | null,
+    area: null as number | null,
     city: "",
     code: "",
     street: "",
-    street_num: null,
-    price: null,
+    street_num: null as number | null,
+    price: null as number | null,
 });
 
 const create = () => {

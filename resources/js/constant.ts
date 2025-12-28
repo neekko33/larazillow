@@ -1,4 +1,11 @@
-export const FORM_ITEMS = [
+export interface FormItem {
+    label: string
+    prop: string
+    cols: number
+    isNumber: boolean
+}
+
+export const FORM_ITEMS: FormItem[] = [
     { label: "Beds", prop: "beds", cols: 2, isNumber: true },
     { label: "Baths", prop: "baths", cols: 2, isNumber: true },
     { label: "Area", prop: "area", cols: 2, isNumber: true },
@@ -7,4 +14,4 @@ export const FORM_ITEMS = [
     { label: "Street", prop: "street", cols: 4, isNumber: false },
     { label: "Street Nr", prop: "street_num", cols: 2, isNumber: true },
     { label: "Price", prop: "price", cols: 6, isNumber: true },
-];
+]

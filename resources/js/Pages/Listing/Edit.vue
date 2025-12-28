@@ -1,16 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import ListingFormItem from "@/Components/ListingFormItem.vue";
 import { useForm } from "@inertiajs/vue3";
-import { inject } from "vue";
-import { FORM_ITEMS as formItems } from "@/constant.js";
+import { FORM_ITEMS as formItems } from "@/constant";
+import type { ListingFormProps } from "@/types";
 
-const props = defineProps({
-    listing: Object,
-});
+const props = defineProps<ListingFormProps>();
 
-const route = inject("route");
-
-const form = useForm(props.listing);
+const form = useForm(props.listing!);
 
 const update = () => {
     form.put(route("listing.update", form.id));

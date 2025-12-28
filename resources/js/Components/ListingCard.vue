@@ -1,13 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import { Link } from "@inertiajs/vue3";
 import Box from "./UI/Box.vue";
 import ListingAddress from "./ListingAddress.vue";
 import ListingSpace from "./ListingSpace.vue";
 import Price from "./Price.vue";
+import type { Listing } from "@/types";
 
-defineProps({
-    listing: Object,
-});
+defineProps<{
+    listing: Listing
+}>();
 </script>
 
 <template>

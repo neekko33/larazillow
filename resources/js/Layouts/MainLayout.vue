@@ -1,8 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { Link, usePage } from "@inertiajs/vue3";
-import { computed, ref, watch } from "vue";
+import { computed } from "vue";
+import type { PageProps } from "@/types";
 
-const page = usePage();
+const page = usePage<PageProps>();
 
 const flashMessage = computed(() => page.props.flash.success);
 
@@ -27,7 +28,7 @@ const flashMessage = computed(() => page.props.flash.success);
         </header>
 
         <main class="container mx-auto p-4">
-            <div v-if="flashMessage && showFlash"
+            <div v-if="flashMessage"
                 class="my-4 text-white font-medium bg-green-500 px-4 py-2 rounded-md shadow-sm">
                 {{ flashMessage }}
             </div>

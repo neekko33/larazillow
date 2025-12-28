@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 
-const props = defineProps({
-    price: [Number, String],
-});
+const props = defineProps<{
+    price: number | string
+}>();
 
 const formattedPrice = computed(() => {
     const priceNumber = Number(props.price);

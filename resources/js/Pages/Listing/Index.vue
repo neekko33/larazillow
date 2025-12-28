@@ -1,9 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import ListingCard from "@/Components/ListingCard.vue";
+import type { ListingIndexProps } from "@/types";
 
-defineProps({
-    listings: Array,
-});
+defineProps<ListingIndexProps>();
 </script>
 
 <template>
