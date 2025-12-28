@@ -20,15 +20,15 @@ const flashMessage = computed(() => page.props.flash.success);
                         <Link :href="route('listing.index')" class="mr-2">LaraZillow</Link>
                     </div>
                     <div>
-                        <Link :href="route('listing.create')"
-                            class="btn-primary">+ New Listing</Link>
+                        <Link :href="route('listing.create')" class="btn-primary">+ New Listing</Link>
                     </div>
                 </nav>
             </div>
         </header>
 
         <main class="container mx-auto p-4">
-            <div v-if="flashMessage && showFlash" class="my-4 text-white font-medium bg-green-500 px-4 py-2 rounded-md shadow-sm">
+            <div v-if="flashMessage && showFlash"
+                class="my-4 text-white font-medium bg-green-500 px-4 py-2 rounded-md shadow-sm">
                 {{ flashMessage }}
             </div>
             <slot />
