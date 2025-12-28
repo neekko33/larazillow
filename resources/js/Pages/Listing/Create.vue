@@ -17,14 +17,14 @@ const form = useForm({
 });
 
 const formItems = [
-    { label: "Beds", prop: "beds", isNumber: true },
-    { label: "Baths", prop: "baths", isNumber: true },
-    { label: "Area", prop: "area", isNumber: true },
-    { label: "City", prop: "city", isNumber: false },
-    { label: "Post Code", prop: "code", isNumber: false },
-    { label: "Street", prop: "street", isNumber: false },
-    { label: "Street Nr", prop: "street_num", isNumber: true },
-    { label: "Price", prop: "price", isNumber: true },
+    { label: "Beds", prop: "beds", cols: 2, isNumber: true },
+    { label: "Baths", prop: "baths", cols: 2, isNumber: true },
+    { label: "Area", prop: "area", cols: 2, isNumber: true },
+    { label: "City", prop: "city", cols: 4, isNumber: false },
+    { label: "Post Code", prop: "code", cols: 2, isNumber: false },
+    { label: "Street", prop: "street", cols: 4, isNumber: false },
+    { label: "Street Nr", prop: "street_num", cols: 2, isNumber: true },
+    { label: "Price", prop: "price", cols: 6, isNumber: true },
 ];
 
 const create = () => {
@@ -34,7 +34,7 @@ const create = () => {
 
 <template>
     <form @submit.prevent="create">
-        <div class="space-y-2">
+        <div class="grid grid-cols-6 gap-4">
             <ListingFormItem
                 v-for="item in formItems"
                 :key="item.prop"
@@ -42,11 +42,12 @@ const create = () => {
                 :label="item.label"
                 :prop="item.prop"
                 :isNumber="item.isNumber"
+                :cols="item.cols"
             />
             <div>
                 <button
                     type="submit"
-                    class="bg-sky-500 text-white px-4 py-1 rounded"
+                    class="btn-primary px-4!"
                 >
                     Create
                 </button>

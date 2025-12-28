@@ -16,18 +16,11 @@ defineProps({
         <ListingSpace :listing="listing" class="text-lg" />
         <ListingAddress :listing="listing" class="text-gray-500 mr-2" />
         <div>
-            <Link
-                class="text-blue-500 underline"
-                :href="route('listing.edit', listing.id)"
-                >Edit Listing</Link
-            >
-            <Link
-                class="text-red-500 underline ml-4"
-                :href="route('listing.destroy', listing.id)"
-                method="delete"
-                as="button"
-            >
-                Delete Listing
+            <Link class="text-green-500 underline" :href="route('listing.show', listing.id)">View Listing</Link>
+            <Link class="text-blue-500 underline ml-4" :href="route('listing.edit', listing.id)">Edit Listing</Link>
+            <Link class="text-red-500 underline ml-4" :href="route('listing.destroy', listing.id)" method="delete"
+                as="button">
+            Delete Listing
             </Link>
         </div>
     </Box>
